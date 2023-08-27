@@ -8,9 +8,9 @@ Feature: Feature 1
         # Given I am in playground page 
         Then the "java" checkbox should be disabled
         And the "python" checkbox should be enabled
-    
+
     @smoke 
-    Scenario: Scenario 2
+    Scenario: Scenario 5
         # Given I am in playground page 
         When I check the "python" checkbox
         Then the checkbox with id "check_python" should be selected
