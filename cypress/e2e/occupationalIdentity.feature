@@ -30,6 +30,7 @@ Feature: occupational identity Scenarios
     Then user see disable Register button
     Then user type "فعالیت تست" in activity field
     Then user see disable Register button
-    Then user select "فرایندی  " danger
+    Then user select "فرایندی" item in tree
+    Then user see disable Register button
 
 

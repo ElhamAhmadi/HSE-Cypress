@@ -6,7 +6,6 @@
   "scripts": {
     "test": "cypress run"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,6 +26,4 @@
     "url": "https://github.com/ElhamAhmadi/HSE-Cypress.git"
   },
   "homepage": "https://github.com/ElhamAhmadi/HSE-Cypress.git#readme"
-
-
 }
