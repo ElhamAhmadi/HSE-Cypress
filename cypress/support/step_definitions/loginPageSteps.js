@@ -3,10 +3,11 @@ import {loginPage} from "../../e2e/Pages/loginPage"
 import {occupationalIdentityPage} from "../../e2e/Pages/occupationalIdentityPage";
 
 let login = new loginPage()
-let occupationalIdentity =new  occupationalIdentityPage()
+let occupationalIdentity = new occupationalIdentityPage()
 
 Given('user is in login page', () => {
     login.openLoginPage()
+
 })
 
 When('user enter valid username and password', () => {
@@ -33,3 +34,11 @@ Given('user is in risk management occupational identity', () => {
 
 })
 
+Given(/^user Login With Valid User$/, function () {
+    // cy.visit('http://staging.icico.net.ir')
+
+    login.loginWithUi()
+    login.clickOnHSELink()
+
+
+});

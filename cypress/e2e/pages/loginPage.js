@@ -2,8 +2,7 @@ import {LoginElement} from "../elements/loginElement";
 import {sharedElements} from "../elements/sharedElement";
 
 
-
-let  Elements = new LoginElement()
+let Elements = new LoginElement()
 
 
 export class loginPage {
@@ -43,5 +42,16 @@ export class loginPage {
         return cy.get(Elements.USER_LABLE, {timeout: 2000}).contains('اکبر تقی پور')
     }
 
+    loginWithApi() {
+
+        return cy.LoginWithApi('taghipour_ak', 'password')
+    }
+
+    loginWithUi() {
+
+
+        return cy.LoginWithUi('taghipour_ak', 'password')
+
+    }
 
 }

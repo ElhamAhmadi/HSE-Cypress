@@ -20,7 +20,11 @@ export class sharedElements{
     TitleInTree= 'div[title= "item"]'
     TreeNodes= 'div[class=tree-Nodes]'
     li= 'li'
-
+    Add= 'hse-button-cancel[ng-reflect-text="افزودن به لیست"]'
+    strong = 'strong[close-popup="exit-popup"]'
+    deleteBtn= 'button>mat-icon[class*=\'ng-star-inserted\']'
+    Row_Actions= 'div[class *="row-action"]'
+    Row_Grid= 'div[class *="grid-row-container"]'
 
 
 

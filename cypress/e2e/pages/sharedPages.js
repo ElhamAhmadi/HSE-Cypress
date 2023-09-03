@@ -7,6 +7,27 @@ let sharedElemnts = new sharedElements()
 
 export class sharedPages {
 
+// Button  Actions -------------------------------------------------------------------
+
+    cliClickAddBtn(){
+        return cy.get(sharedElemnts.Add).click()
+}
+
+    validateDisableRegisterBtn() {
+        return cy.get(occupationalIdentityElemnts.REGISTER_BTN).should('have.attr', 'ng-reflect-disabled', 'true')
+    }
+    clickOnRegisterbtn() {
+        return cy.get(occupationalIdentityElemnts.REGISTER_BTN).click()
+    }
+    validateEnableRegisterBtn() {
+        return cy.get(occupationalIdentityElemnts.REGISTER_BTN).should('have.attr', 'ng-reflect-disabled', 'false')
+    }
+
+    validateVisiablityDelBtn(){
+        return cy.get(sharedElemnts.deleteBtn).should('have.length',2)
+    }
+
+
 // Tree  Actions -------------------------------------------------------------------
 
     addItemInTree(input) {
@@ -37,21 +58,23 @@ export class sharedPages {
 
     }
 
-// Register Button Actions ------------------------------
-
-    validateVisibilityOfRegisterBtn() {
-        return cy.get(occupationalIdentityElemnts.REGISTER_BTN).should('have.attr', 'ng-reflect-disabled', 'true')
-    }
-
 // Grid  Actions ------------------------------
 
     validateLoadOfGrid() {
         return cy.get(sharedElemnts.GRID).should('be.visible')
     }
+    validateTextInGrid(text) {
+        return cy.get(sharedElemnts.SPAN).contains('21024402').parents(sharedElemnts.Row_Grid)
+            .within( ()=> {
+            cy.get(sharedElemnts.SPAN). should('contain.text',text)
+
+        })
+
+    }
 
 // DropDown  Actions ------------------------------
 
-    selectDropDownWithMat(text) {
+    SearchDropDownWithPlaceHolder(text) {
         return cy.contains(sharedElemnts.PlaceHolder, text).click({force: true})
     }
 
