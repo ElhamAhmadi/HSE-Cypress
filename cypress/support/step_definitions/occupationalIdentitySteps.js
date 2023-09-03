@@ -76,10 +76,10 @@ Then(/^user select create button$/, function () {
 
 });
 
-Then(/^user can sees the created identity in grid correctly$/, function (datatable) {
+Then(/^user can sees "([^"]*)" the created identity in grid correctly$/, function (row,datatable ) {
 
     datatable.rows().forEach(text => {
-        sharedPage.validateTextInGrid(text)
+        sharedPage.validateTextInGrid(row,text)
     })
 
 });

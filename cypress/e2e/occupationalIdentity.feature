@@ -61,7 +61,7 @@ Feature: occupational identity Scenarios
       |فعالیت اول|
       |فعالیت دوم|
     Then user select create button
-    Then user can sees the created identity in grid correctly
+    Then user can sees "21024402" the created identity in grid correctly
       | 21024402                                                                                |
       | کارشناس ارزیابی و ترفیعات                                                               |
       | 122020101120                                                                            |

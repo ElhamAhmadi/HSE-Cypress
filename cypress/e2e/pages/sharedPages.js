@@ -58,13 +58,13 @@ export class sharedPages {
 
     }
 
-// Grid  Actions ------------------------------
+// Grid  Actions ------------------------------'21024402'
 
     validateLoadOfGrid() {
         return cy.get(sharedElemnts.GRID).should('be.visible')
     }
-    validateTextInGrid(text) {
-        return cy.get(sharedElemnts.SPAN).contains('21024402').parents(sharedElemnts.Row_Grid)
+    validateTextInGrid(row,text) {
+        return cy.get(sharedElemnts.SPAN).contains(row).parents(sharedElemnts.Row_Grid)
             .within( ()=> {
             cy.get(sharedElemnts.SPAN). should('contain.text',text)
 
