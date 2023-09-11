@@ -1,0 +1,7 @@
+<suite name="Cucumber Tests">
+    <test name="Cucumber Test">
+        <classes>
+            <class name="com.example.RunCucumberTest"/>
+        </classes>
+    </test>
+</suite>

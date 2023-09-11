@@ -10,40 +10,40 @@ Feature: occupational identity Scenarios
     Then user click on "مدیریت ریسک"
     Then user click on "شناسنامه شغلی"
 
-#  @Regression
-#  Scenario:  user should not be able register without mandatory fields
-#
-#    Given user click on "ثبت شناسنامه شغلی"
-#    Then user see disable Register button
-#    And user search on "پست سازمانی" drop down with "21024402" text
-#    And user click on "کارشناس ارزیابی و ترفیعات - 21024402"
-#    Then user see disable Register button
-#    And  user select "5" day in " تاریخ اعمال" filed
-#    Then user see disable Register button
-#    Then user type "فعالیت تست" in activity field
-#    Then user see disable Register button
-#    Then user select "فرایندی" item in tree
-#    Then user see disable Register button
-#    Then user Add danger to list
-#    Then user see enable Register button
-#
-#
-#  @Regression
-#  Scenario:  user can see correct info about selected post
-#    Given user click on "ثبت شناسنامه شغلی"
-#    And user search on "پست سازمانی" drop down with "21024402" text
-#    And user click on "کارشناس ارزیابی و ترفیعات - 21024402"
-#    Then the following info should be listed:
-#      |کارشناس اداری|
-#      |امور منابع انساني و آموزش شهربابک-ارزيابي و ترفيعات شهربابک|
-#      |مسئول و کارشناس|
-#      |منطقه کرمان|
-#      |مدير مجتمع مس شهربابک|
-#      |معاون پشتيباني شهربابک|
-#      |امور منابع انساني و آموزش شهربابک|
-#      |کارگزيني مجتمع مس شهربابک|
-#      |کارگزيني مس شهربابک|
-#
+  @Regression
+  Scenario:  user should not be able register without mandatory fields
+
+    Given user click on "ثبت شناسنامه شغلی"
+    Then user see disable Register button
+    And user search on "پست سازمانی" drop down with "21024402" text
+    And user click on "کارشناس ارزیابی و ترفیعات - 21024402"
+    Then user see disable Register button
+    And  user select "5" day in " تاریخ اعمال" filed
+    Then user see disable Register button
+    Then user type "فعالیت تست" in activity field
+    Then user see disable Register button
+    Then user select "فرایندی" item in tree
+    Then user see disable Register button
+    Then user Add danger to list
+    Then user see enable Register button
+
+
+  @Regression
+  Scenario:  user can see correct info about selected post
+    Given user click on "ثبت شناسنامه شغلی"
+    And user search on "پست سازمانی" drop down with "21024402" text
+    And user click on "کارشناس ارزیابی و ترفیعات - 21024402"
+    Then the following info should be listed:
+      |کارشناس اداری|
+      |امور منابع انساني و آموزش شهربابک-ارزيابي و ترفيعات شهربابک|
+      |مسئول و کارشناس|
+      |منطقه کرمان|
+      |مدير مجتمع مس شهربابک|
+      |معاون پشتيباني شهربابک|
+      |امور منابع انساني و آموزش شهربابک|
+      |کارگزيني مجتمع مس شهربابک|
+      |کارگزيني مس شهربابک|
+
 
   @smoke
   Scenario:  user create occupational identity for a job
@@ -68,5 +68,17 @@ Feature: occupational identity Scenarios
       | 122020101120-امور منابع انسانی و آموزش شهربابک-ارزیابی و ترفیعات شهربابک - 122020101120 |
       | 2                                                                                       |
       | 1402/06/05                                                                              |
-
-
+    Then user can sees "2" deatail for "21024402" row In grid
+    Then  user click on more info button
+    Then the following info should be listed:
+      | 21024402                                                                                |
+      | کارشناس ارزیابی و ترفیعات                                                               |
+      | 122020101120                                                                            |
+      | 122020101120-امور منابع انسانی و آموزش شهربابک-ارزیابی و ترفیعات شهربابک - 122020101120 |
+      | کارشناس اداری                                                                           |
+      | مسئول و کارشناس 1                                                                       |
+    Then the following info should be listed in grid
+      | فعالیت دوم |
+      | فعالیت اول |
+      | ایمنی      |
+      | فرایندی    |

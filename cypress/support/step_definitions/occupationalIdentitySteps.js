@@ -27,7 +27,7 @@ Then(/^user search on "([^"]*)" drop down with "([^"]*)" text$/, function (matLa
 
 Then(/^the following info should be listed:$/, function (datatable) {
     datatable.rows().forEach(text => {
-        sharedPage.ValidateInfo(text)
+        sharedPage.ValidateDetail(text)
     })
 
 });
@@ -65,21 +65,36 @@ Then(/^user see enable Register button$/, function () {
 
 Then(/^user can see with del button in the table$/, function (datatable) {
     datatable.rows().forEach(text => {
-        sharedPage.ValidateInfo(text)
+      sharedPage.validateValuesInDetailGrid(text)
+
     })
     sharedPage.validateVisiablityDelBtn()
 
     });
 Then(/^user select create button$/, function () {
-
     sharedPage.clickOnRegisterbtn()
 
 });
 
 Then(/^user can sees "([^"]*)" the created identity in grid correctly$/, function (row,datatable ) {
-
     datatable.rows().forEach(text => {
         sharedPage.validateTextInGrid(row,text)
+
     })
 
+});
+Then(/^user can sees "([^"]*)" deatail for "([^"]*)" row In grid$/, function (text, row) {
+    sharedPage.ClickDetailInGrid(text, row)
+    //sharedPage.validateTextInGrid(text, row)
+
+});
+Then(/^the following info should be listed in grid$/, function (datatable) {
+    datatable.rows().forEach(text => {
+        sharedPage.validateInfoInGrid(text)
+    })
+
+
+});
+Then(/^user click on more info button$/, function () {
+        sharedPage.clickOnMoreInfo()
 });
