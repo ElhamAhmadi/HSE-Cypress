@@ -16,6 +16,7 @@ module.exports = defineConfig({
       return config;
     },
 	specPattern: "**/*.feature",
+    baseUrl: 'http://staging.icico.net.ir',
   },
   "watchForFileChange": false
 })

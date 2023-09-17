@@ -9,8 +9,15 @@ export class sharedPages {
 
 // Button  Actions -------------------------------------------------------------------
 
-    cliClickAddBtn() {
+    clickAddBtn() {
         return cy.get(sharedElemnts.Add).click()
+    }
+
+    clickCancelBtn() {
+        return cy.get(occupationalIdentityElemnts.CANCEL_BTN).contains('لغو و بازگشت').click({force:true})
+    }
+    clickConfirmCancelBtn() {
+        return cy.get(sharedElemnts.hseButtonCancel).contains('بلی').click({force:true})
     }
 
     validateDisableRegisterBtn() {
@@ -42,9 +49,10 @@ export class sharedPages {
     }
 
 // Span Actions ------------------------------
-    ValidateDetail(lable){
 
-        return cy.get(sharedElemnts.HseTopSheet).within( () => {
+    ValidateDetail(lable) {
+
+        return cy.get(sharedElemnts.HseTopSheet).within(() => {
             cy.get(sharedElemnts.SPAN).should('include.text', lable)
         })
 
@@ -69,10 +77,10 @@ export class sharedPages {
 
 // Grid  Actions ------------------------------
 
-    validateValuesInDetailGrid(text){
+    validateValuesInDetailGrid(text) {
         return cy.get(sharedElemnts.HseGrid)
             .within(() => {
-                cy.get(sharedElemnts.SPAN).should('contain.text',text)
+                cy.get(sharedElemnts.SPAN).should('contain.text', text)
 
             })
     }
@@ -82,16 +90,16 @@ export class sharedPages {
     }
 
     validateTextInGrid(row, text) {
-        // return cy.get(sharedElemnts.SPAN).contains(row).parents(sharedElemnts.Row_Grid)
-        //     .within(() => {
-        //         cy.get(sharedElemnts.SPAN).should('contain.text', text)
-        //
-        //     })
-        //
-        return cy.get(sharedElemnts.GridRow).each(function($es) {
-            if($es.text()=== row)
-                    cy.get($es.text()).should('contain.text', text)
-            })
+        return cy.get(sharedElemnts.GridRow).each(function ($es) {
+            if ($es.text() === row)
+                cy.get($es.text()).should('contain.text', text)
+        })
+    }
+
+    ValidateCountOfRows() {
+        return cy.get(sharedElemnts.GridRow).each(function ($el, index) {
+            cy.wrap($el).should('have.length', 1)
+        })
     }
 
     ClickDetailInGrid(text, row) {
@@ -101,24 +109,35 @@ export class sharedPages {
             })
     }
 
-    validateInfoInGrid(text){
+    validateInfoInGrid(text) {
         return cy.get(sharedElemnts.Row_Grid_Detail)
-            .each(function ($el,index,$list) {
-                cy.get(sharedElemnts.HseGridOld).within( ()=> {
-                    cy.get(sharedElemnts.SPAN).should('contain.text',text)
+            .each(function ($el, index, $list) {
+                cy.get(sharedElemnts.HseGridOld).within(() => {
+                    cy.get(sharedElemnts.SPAN).should('contain.text', text)
                 })
             })
     }
 
-    validateValuesInGrid(text){
+    validateValuesInGrid(text) {
         return cy.get(sharedElemnts.SPAN).parents(sharedElemnts.Row_Content)
             .within(() => {
-                cy.get(sharedElemnts.SPAN).should('contain.text',text)
+                cy.get(sharedElemnts.SPAN).should('contain.text', text)
 
             })
-          }
+    }
 
-// DropDown  Actions ------------------------------
+    SearchInfield(text, field) {
+
+        return cy.get(sharedElemnts.titleInGrid).each(function ($el, index, $list) {
+            cy.log($el.text())
+            if ($el.text() === field) {
+                cy.log(sharedElemnts.searchBoxInGrid)
+                cy.get(sharedElemnts.searchBoxInGrid).eq(index).type(text)
+            }
+        })
+    }
+
+// DropDown  Actions -----------------------------------------------------------------
 
     SearchDropDownWithPlaceHolder(text) {
         return cy.contains(sharedElemnts.PlaceHolder, text).click({force: true})
@@ -128,7 +147,7 @@ export class sharedPages {
         return cy.get(sharedElemnts.Option).type(content)
     }
 
-// DatePicker  Actions ------------------------------
+// DatePicker  Actions ----------------------------------------------------------------------
 
     selectDatepicker(text) {
 
@@ -148,7 +167,41 @@ export class sharedPages {
 
     }
 
-    clickOnMoreInfo(){
-        return cy.get(sharedElemnts.p).contains('مشاهده اطلاعات بیشتر') . click()
+    clickOnMoreInfo() {
+        return cy.get(sharedElemnts.p).contains('مشاهده اطلاعات بیشتر').click()
     }
+
+// Toast Actions ----------------------------------------------------------------------
+
+    ValidateTextInTost(text) {
+        return cy.get(sharedElemnts.HseSnackbar).within(function () {
+            cy.contains(text)
+        })
+    }
+
+    closeToast(){
+        return cy.get(sharedElemnts.HseSnackbar).contains('close').click({force:true})
+    }
+
+// Toast Actions ----------------------------------------------------------------------
+
+    getPostInfoWithApi(text) {
+        return cy.request({
+            url: '/hse-backend/api/post/v1/search-post-in-hrm-all-data',
+            encoding: 'binary',
+        }).then((response) => {
+            cy.writeFile('path/to/save/document.pdf', response.body, 'binary')
+        })
+
+        const items = []
+        cy.cy.request({
+            url: '/hse-backend/api/post/v1/search-post-in-hrm-all-data',
+        })
+            .each((response) => items.push(response.body))
+            .then(() => {
+                cy.log(items.join(', '))
+            })
+    }
+
 }
+

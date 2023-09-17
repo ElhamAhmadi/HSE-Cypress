@@ -8,8 +8,6 @@ let sharedElement = new sharedElements()
 
 export class occupationalIdentityPage {
 
-
-
     typeText(text){
 
          return cy.get(occupationalIdentityElemnts.create_occupational).type(text)
@@ -19,7 +17,6 @@ export class occupationalIdentityPage {
 
               return cy.get(occupationalIdentityElemnts.create_occupational_danger).click()
     }
-
 
     selectDanger(text){
         occupationalIdentityElemnts.setCreateOccupationalDanger("dddd");

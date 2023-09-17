@@ -45,7 +45,7 @@ Feature: occupational identity Scenarios
       |کارگزيني مس شهربابک|
 
 
-  @smoke
+  @Regression
   Scenario:  user create occupational identity for a job
     Given user click on "ثبت شناسنامه شغلی"
     And user search on "پست سازمانی" drop down with "21024402" text
@@ -82,3 +82,17 @@ Feature: occupational identity Scenarios
       | فعالیت اول |
       | ایمنی      |
       | فرایندی    |
+
+  @smoke
+  Scenario:  Insert Duplicated occupational identity
+    Given user click on "ثبت شناسنامه شغلی"
+    And user search on "پست سازمانی" drop down with "21024402" text
+    And user click on "کارشناس ارزیابی و ترفیعات - 21024402"
+    And  user select "5" day in " تاریخ اعمال" filed
+    Then user type "فعالیت اول" in activity field
+    Then user select "فرایندی" item in tree
+    Then user Add danger to list
+    Then user select create button
+    Then user see "مجاز به ثبت داده تکراری نمی باشید" toast
+    Then user click on Cancel Button
+#    Then user search "21024402" on "کد پست" field on grid

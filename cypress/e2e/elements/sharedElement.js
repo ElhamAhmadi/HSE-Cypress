@@ -1,7 +1,6 @@
 
 export class sharedElements{
 
-
      getItemWithTitle(input) {
         return `div[title="${input}"]`
     }
@@ -33,8 +32,11 @@ export class sharedElements{
     HseGridOld= 'hse-grid-old'
     HseGrid = 'hse-grid'
     GridRow='hse-grid-old-row'
-
-
-
+    HseSnackbar= 'hse-snackbar'
+    button='button'
+    hseGridOldHeader= 'hse-grid-old-header'
+    titleInGrid= 'div[class="titles"]'
+    searchBoxInGrid= 'div[class="filters"]'
+    hseButtonCancel= 'hse-button-cancel'
 }
 
